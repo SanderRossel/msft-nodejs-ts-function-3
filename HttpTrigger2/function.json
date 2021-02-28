@@ -1,0 +1,30 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "person/{partitionKey}/{id}"
+    },
+    {
+      "name": "personIn",
+      "databaseName": "mydb",
+      "collectionName": "person",
+      "connectionStringSetting": "CosmosDBConnString",
+      "id": "{id}",
+      "partitionKey": "{partitionKey}",
+      "direction": "in",
+      "type": "cosmosDB"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "scriptFile": "../dist/HttpTrigger2/index.js"
+}
